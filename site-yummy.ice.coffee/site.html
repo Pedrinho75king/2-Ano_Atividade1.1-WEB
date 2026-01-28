@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy Ice Coffee - Loja de Pobá</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2691E;
+            --accent: #FFD700;
+            --light: #FFF8DC;
+            --dark: #3E2723;
+            --text: #333333;
+            --gray: #f5f5f5;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-accent:hover {
+            background-color: #ffed4e;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--dark);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Sabores Section */
+        .sabores {
+            background-color: var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: 0;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .sabores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .sabor-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .sabor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .sabor-img {
+            height: 200px;
+            background-color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .sabor-info {
+            padding: 25px;
+        }
+
+        .sabor-info h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .sabor-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+
+        /* Sobre Section */
+        .sobre-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .sobre-text {
+            flex: 1;
+        }
+
+        .sobre-img {
+            flex: 1;
+            height: 400px;
+            border-radius: var(--border-radius);
+            background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Localização Section */
+        .localizacao {
+            background-color: var(--light);
+        }
+
+        .localizacao-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .localizacao-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .localizacao-map {
+            flex: 2;
+            min-width: 300px;
+            height: 300px;
+            background-color: #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Avaliações Section */
+        .avaliacoes {
+            background-color: var(--gray);
+        }
+
+        .avaliacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .avaliacao-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .avaliacao-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .avaliacao-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avaliacao-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .avaliacao-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .avaliacao-stars {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .avaliacao-text {
+            font-style: italic;
+            color: #555;
+        }
+
+        .avaliacao-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        /* Formulário de Avaliação */
+        .avaliacao-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .stars-input {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .star {
+            font-size: 1.8rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star.active {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Modal Carrinho */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-carrinho {
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            padding: 30px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-carrinho {
+            transform: translateX(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .carrinho-items {
+            margin-bottom: 30px;
+        }
+
+        .carrinho-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-controls button {
+            background-color: var(--gray);
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carrinho-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .sobre-content {
+                flex-direction: column;
+            }
+            
+            .sobre-img {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .avaliacao-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-coffee"></i>
+                Yummy Ice Coffee
+            </a>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sabores">Sabores</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                    <li><a href="#localizacao">Localização</a></li>
+                    <li class="cart-icon" id="open-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Refresque-se com o autêntico Pobá</h1>
+            <p>Descubra a bebida mais amada de Taiwan agora no Brasil! Feita com ingredientes selecionados e preparada com carinho para oferecer uma experiência única de sabor e refrescância.</p>
+            <a href="#sabores" class="btn btn-accent">Conheça nossos sabores</a>
+        </div>
+    </section>
+
+    <!-- Sabores Section -->
+    <section class="sabores" id="sabores">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Sabores</h2>
+                <p>Escolha entre nossas deliciosas variações de Pobá</p>
+            </div>
+            
+            <div class="sabores-grid">
+                <!-- Tradicional -->
+                <div class="sabor-card">
+                    <div class="sabor-img" style="background-color: #F5DEB3;">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="sabor-info">
+                        <h3>Tradicional</h3>
+                        <p>O clássico pobá com chá preto, leite e pérolas de tapioca no ponto perfeito.</p>
+                        <div class="sabor-price">R$ 14,90</div>
+                        <button class="btn add-to-cart" data-id="1" data-name="Pobá Tradicional" data-price="14.90">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                
+                <!-- Mascavo -->
+                <div class="sabor-card">
+                    <div class="sabor-img" style="background-color: #D2B48C;">
+                        <i class="fas fa-candy-cane"></i>
+                    </div>
+                    <div class="sabor-info">
+                        <h3>Mascavo</h3>
+                        <p>Feito com açúcar mascavo artesanal, dando um sabor único e levemente caramelizado.</p>
+                        <div class="sabor-price">R$ 16,90</div>
+                        <button class="btn add-to-cart" data-id="2" data-name="Pobá Mascavo" data-price="16.90">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                
+                <!-- Creme Brûlée -->
+                <div class="sabor-card">
+                    <div class="sabor-img" style="background-color: #FFE4B5;">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="sabor-info">
+                        <h3>Crème Brûlée</h3>
+                        <p>Inspirado na sobremesa francesa, com um toque crocante de caramelo queimado.</p>
+                        <div class="sabor-price">R$ 18,90</div>
+                        <button class="btn add-to-cart" data-id="3" data-name="Pobá Crème Brûlée" data-price="18.90">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                
+                <!-- Tarô -->
+                <div class="sabor-card">
+                    <div class="sabor-img" style="background-color: #9370DB;">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="sabor-info">
+                        <h3>Tarô</h3>
+                        <p>Feito com raiz de tarô natural, resultando em uma cor roxa vibrante e sabor único.</p>
+                        <div class="sabor-price">R$ 17,90</div>
+                        <button class="btn add-to-cart" data-id="4" data-name="Pobá Tarô" data-price="17.90">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a história da Yummy Ice Coffee</p>
+            </div>
+            
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h3>Mais que uma bebida, uma experiência</h3>
+                    <p>A Yummy Ice Coffee nasceu da paixão por bebidas asiáticas e do desejo de trazer para o Brasil o autêntico Pobá, a famosa bebida taiwanesa que conquistou o mundo.</p>
+                    <p>Nossa missão é oferecer uma experiência única de sabor, combinando técnicas tradicionais com ingredientes de alta qualidade. Cada copo é preparado com atenção aos detalhes, garantindo a textura perfeita das pérolas de tapioca e o equilíbrio ideal entre o chá, o leite e os adoçantes.</p>
+                    <p>Além dos sabores clássicos, criamos variações exclusivas que celebram a fusão entre a cultura taiwanesa e brasileira, como nosso Pobá de Crème Brûlée.</p>
+                    <a href="#localizacao" class="btn">Visite nossa loja</a>
+                </div>
+                <div class="sobre-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avaliações Section -->
+    <section class="avaliacoes" id="avaliacoes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Avaliações dos Clientes</h2>
+                <p>Veja o que nossos clientes estão dizendo sobre nós</p>
+            </div>
+            
+            <div class="avaliacoes-grid" id="avaliacoes-container">
+                <!-- As avaliações serão carregadas via JavaScript -->
+            </div>
+            
+            <!-- Formulário de Avaliação -->
+            <div class="avaliacao-form">
+                <h3 style="text-align: center; margin-bottom: 30px;">Deixe sua avaliação</h3>
+                <form id="avaliacao-form">
+                    <div class="form-group">
+                        <label for="nome">Seu nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Sua avaliação</label>
+                        <div class="stars-input" id="stars-input">
+                            <span class="star" data-value="1"><i class="far fa-star"></i></span>
+                            <span class="star" data-value="2"><i class="far fa-star"></i></span>
+                            <span class="star" data-value="3"><i class="far fa-star"></i></span>
+                            <span class="star" data-value="4"><i class="far fa-star"></i></span>
+                            <span class="star" data-value="5"><i class="far fa-star"></i></span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" value="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comentario">Seu comentário</label>
+                        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Avaliação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização Section -->
+    <section class="localizacao" id="localizacao">
+        <div class="container">
+            <div class="section-title">
+                <h2>Localização</h2>
+                <p>Venha nos visitar e experimente nosso Pobá</p>
+            </div>
+            
+            <div class="localizacao-content">
+                <div class="localizacao-info">
+                    <h3>Yummy Ice Coffee</h3>
+                    <p>Estamos localizados no coração do bairro da Liberdade, em um ambiente aconchegante e moderno, perfeito para aproveitar seu Pobá favorito.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>R. Galvão Bueno, 412 - Liberdade<br>São Paulo - SP, 01506-000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sexta: 11h às 22h<br>Sábado e Domingo: 11h às 23h</p>
+                            <p style="color: var(--secondary); font-weight: 600; margin-top: 5px;">Abre às 11:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>+55 (11) 2307-3805</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="localizacao-map">
+                    <!-- Mapa Simulado -->
+                    <div style="width: 100%; height: 100%; background-color: #8B4513; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem;">
+                        Mapa da Localização<br>(Liberdade, São Paulo)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Yummy Ice Coffee</h3>
+                    <p>Trazer o autêntico Pobá de Taiwan para o Brasil com qualidade, sabor e uma experiência única.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sabores">Sabores</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#avaliacoes">Avaliações</a></li>
+                        <li><a href="#localizacao">Localização</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> R. Galvão Bueno, 412 - Liberdade, SP</p>
+                    <p><i class="fas fa-phone-alt"></i> +55 (11) 2307-3805</p>
+                    <p><i class="fas fa-envelope"></i> contato@yummyicecoffee.com.br</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Yummy Ice Coffee. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Carrinho -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-carrinho">
+            <div class="modal-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-modal" id="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="carrinho-items" id="cart-items">
+                <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+                <p id="empty-cart-message" style="text-align: center; color: #777;">Seu carrinho está vazio</p>
+            </div>
+            
+            <div class="carrinho-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            
+            <button class="btn btn-accent" style="width: 100%; margin-top: 20px;" id="checkout-btn">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos produtos
+        const produtos = [
+            { id: 1, nome: "Pobá Tradicional", preco: 14.90 },
+            { id: 2, nome: "Pobá Mascavo", preco: 16.90 },
+            { id: 3, nome: "Pobá Crème Brûlée", preco: 18.90 },
+            { id: 4, nome: "Pobá Tarô", preco: 17.90 }
+        ];
+
+        // Estado do carrinho
+        let carrinho = [];
+
+        // Avaliações iniciais
+        let avaliacoes = [
+            {
+                nome: "Mariana Santos",
+                rating: 5,
+                comentario: "O melhor Pobá que já tomei! O de Crème Brûlée é uma experiência única. As pérolas de tapioca estão sempre no ponto perfeito.",
+                data: "15/10/2023",
+                inicial: "M"
+            },
+            {
+                nome: "Carlos Silva",
+                rating: 4,
+                comentario: "Adorei o ambiente e o atendimento. O Pobá Mascavo tem um sabor incrível. Voltarei com certeza!",
+                data: "10/10/2023",
+                inicial: "C"
+            },
+            {
+                nome: "Ana Paula Oliveira",
+                rating: 5,
+                comentario: "Sou fã de Pobá e já experimentei em vários lugares, mas aqui é sem dúvida o melhor. O Tarô tem uma cor linda e sabor delicioso.",
+                data: "05/10/2023",
+                inicial: "A"
+            },
+            {
+                nome: "Roberto Lima",
+                rating: 5,
+                comentario: "Localização perfeita na Liberdade, atendimento excelente e os sabores são únicos. Recomendo muito!",
+                data: "01/10/2023",
+                inicial: "R"
+            }
+        ];
+
+        // Elementos do DOM
+        const cartModal = document.getElementById('cart-modal');
+        const openCartBtn = document.getElementById('open-cart');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartTotalElement = document.getElementById('cart-total');
+        const cartCountElement = document.querySelector('.cart-count');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav a');
+        const avaliacoesContainer = document.getElementById('avaliacoes-container');
+        const avaliacaoForm = document.getElementById('avaliacao-form');
+        const starsInput = document.getElementById('stars-input');
+        const ratingInput = document.getElementById('rating');
+        const stars = starsInput.querySelectorAll('.star');
+
+        // Funções do carrinho
+        function atualizarCarrinho() {
+            // Atualizar contador do carrinho
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+            cartCountElement.textContent = totalItens;
+            
+            // Atualizar lista de itens no carrinho
+            cartItemsContainer.innerHTML = '';
+            
+            if (carrinho.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartTotalElement.textContent = 'R$ 0,00';
+                return;
+            }
+            
+            emptyCartMessage.style.display = 'none';
+            
+            // Calcular total
+            let total = 0;
+            
+            // Adicionar cada item ao carrinho
+            carrinho.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'carrinho-item';
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <h4>${item.nome}</h4>
+                        <p>R$ ${item.preco.toFixed(2)}</p>
+                    </div>
+                    <div class="item-controls">
+                        <button class="decrease-item" data-id="${item.id}">-</button>
+                        <span>${item.quantidade}</span>
+                        <button class="increase-item" data-id="${item.id}">+</button>
+                        <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(itemElement);
+                total += item.preco * item.quantidade;
+            });
+            
+            // Atualizar total
+            cartTotalElement.textContent = `R$ ${total.toFixed(2)}`;
+            
+            // Adicionar eventos aos botões de controle
+            document.querySelectorAll('.decrease-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    alterarQuantidadeItem(id, -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    alterarQuantidadeItem(id, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    removerItem(id);
+                });
+            });
+        }
+
+        function adicionarAoCarrinho(id) {
+            const produto = produtos.find(p => p.id === id);
+            
+            if (!produto) return;
+            
+            // Verificar se o item já está no carrinho
+            const itemExistente = carrinho.find(item => item.id === id);
+            
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push({
+                    id: produto.id,
+                    nome: produto.nome,
+                    preco: produto.preco,
+                    quantidade: 1
+                });
+            }
+            
+            atualizarCarrinho();
+            
+            // Mostrar feedback visual
+            const btn = document.querySelector(`.add-to-cart[data-id="${id}"]`);
+            const originalText = btn.textContent;
+            btn.textContent = 'Adicionado!';
+            btn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = '';
+            }, 1000);
+        }
+
+        function alterarQuantidadeItem(id, quantidade) {
+            const item = carrinho.find(item => item.id === id);
+            
+            if (!item) return;
+            
+            item.quantidade += quantidade;
+            
+            // Remover item se quantidade for 0 ou menos
+            if (item.quantidade <= 0) {
+                carrinho = carrinho.filter(item => item.id !== id);
+            }
+            
+            atualizarCarrinho();
+        }
+
+        function removerItem(id) {
+            carrinho = carrinho.filter(item => item.id !== id);
+            atualizarCarrinho();
+        }
+
+        // Funções para avaliações
+        function carregarAvaliacoes() {
+            avaliacoesContainer.innerHTML = '';
+            
+            avaliacoes.forEach(avaliacao => {
+                const avaliacaoElement = document.createElement('div');
+                avaliacaoElement.className = 'avaliacao-card';
+                
+                // Criar estrelas
+                let estrelas = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= avaliacao.rating) {
+                        estrelas += '<i class="fas fa-star"></i>';
+                    } else {
+                        estrelas += '<i class="far fa-star"></i>';
+                    }
+                }
+                
+                avaliacaoElement.innerHTML = `
+                    <div class="avaliacao-header">
+                        <div class="avaliacao-avatar" style="background-color: ${getRandomColor()}">
+                            ${avaliacao.inicial}
+                        </div>
+                        <div class="avaliacao-info">
+                            <h4>${avaliacao.nome}</h4>
+                            <div class="avaliacao-stars">
+                                ${estrelas}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="avaliacao-text">
+                        <p>"${avaliacao.comentario}"</p>
+                    </div>
+                    <div class="avaliacao-date">
+                        ${avaliacao.data}
+                    </div>
+                `;
+                
+                avaliacoesContainer.appendChild(avaliacaoElement);
+            });
+        }
+
+        function getRandomColor() {
+            const colors = ['#8B4513', '#D2691E', '#A0522D', '#CD853F', '#DAA520'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function adicionarAvaliacao(nome, rating, comentario) {
+            const dataAtual = new Date();
+            const dia = String(dataAtual.getDate()).padStart(2, '0');
+            const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+            const ano = dataAtual.getFullYear();
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+            
+            const novaAvaliacao = {
+                nome: nome,
+                rating: rating,
+                comentario: comentario,
+                data: dataFormatada,
+                inicial: nome.charAt(0).toUpperCase()
+            };
+            
+            avaliacoes.unshift(novaAvaliacao); // Adiciona no início
+            carregarAvaliacoes();
+        }
+
+        // Event Listeners
+        openCartBtn.addEventListener('click', () => {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeCartBtn.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = parseInt(e.target.getAttribute('data-id'));
+                adicionarAoCarrinho(id);
+            });
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            if (carrinho.length === 0) {
+                alert('Seu carrinho está vazio! Adicione alguns produtos antes de finalizar o pedido.');
+                return;
+            }
+            
+            alert('Pedido finalizado com sucesso! Em breve entraremos em contato para confirmar seu pedido.');
+            carrinho = [];
+            atualizarCarrinho();
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Menu mobile
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Sistema de estrelas
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-value')) <= value) {
+                        s.innerHTML = '<i class="fas fa-star"></i>';
+                        s.classList.add('active');
+                    } else {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                        s.classList.remove('active');
+                    }
+                });
+            });
+            
+            star.addEventListener('mouseover', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-value')) <= value) {
+                        s.innerHTML = '<i class="fas fa-star"></i>';
+                    } else {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                    }
+                });
+            });
+        });
+
+        // Reset estrelas ao tirar o mouse
+        starsInput.addEventListener('mouseleave', () => {
+            const currentValue = parseInt(ratingInput.value);
+            
+            stars.forEach(s => {
+                const value = parseInt(s.getAttribute('data-value'));
+                
+                if (value <= currentValue) {
+                    s.innerHTML = '<i class="fas fa-star"></i>';
+                    s.classList.add('active');
+                } else {
+                    s.innerHTML = '<i class="far fa-star"></i>';
+                    s.classList.remove('active');
+                }
+            });
+        });
+
+        // Formulário de avaliação
+        avaliacaoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const rating = parseInt(ratingInput.value);
+            const comentario = document.getElementById('comentario').value;
+            
+            if (rating === 0) {
+                alert('Por favor, selecione uma avaliação com estrelas.');
+                return;
+            }
+            
+            adicionarAvaliacao(nome, rating, comentario);
+            
+            // Limpar formulário
+            avaliacaoForm.reset();
+            ratingInput.value = 0;
+            
+            stars.forEach(s => {
+                s.innerHTML = '<i class="far fa-star"></i>';
+                s.classList.remove('active');
+            });
+            
+            alert('Obrigado pela sua avaliação!');
+            
+            // Scroll para as avaliações
+            document.querySelector('#avaliacoes').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll suave para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Inicializar carrinho e avaliações
+        atualizarCarrinho();
+        carregarAvaliacoes();
+    </script>
+</body>
+</html>
